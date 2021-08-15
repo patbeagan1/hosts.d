@@ -24,8 +24,13 @@ will try to access the given IP address. For sites that you do not actually want
 to contact, pointing to 127.0.0.1 (localhost) means that you ask your own
 machine for the information. It makes the request fail.
 
-You can see the test output of the tool at `./build/hosts`. It is the compiled
+You can see the test output of the tool at `./build/example.hosts`. It is the compiled
 output of the `./blocklists` and `./redirects` files.
+
+Since the actual files are pretty large, the `gitignore` includes 
+
+- the whole `build` folder other than `example.hosts` 
+- the `./blocklists/local` folder (which you may have to mkdir yourself)
 
 ## Usage
 
