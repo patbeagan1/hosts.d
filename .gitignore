@@ -1,4 +1,5 @@
 build
+blocklists/local
 
 # Logs
 logs
