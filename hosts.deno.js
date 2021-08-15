@@ -11,14 +11,27 @@ const regexInlineComment = RegExp("[ ]+#");
 const regexLeadingComment = RegExp("^[ \t]*#");
 const regexBracketRange = RegExp(`\\[([^\\[\\]]+)\\]`);
 
-const main = () => {
-  const fileList = generateFileList("blocklists");
-  if (debug) console.log(fileList);
+const separator = (it) => `
 
-  const sites = generateSiteList(fileList);
+#============
+# ${it}
+#============  
+
+`;
+
+const main = () => {
+  const blocklist = generateFileList("blocklists");
+  const redirectlist = generateFileList("redirects");
+  if (debug) console.log(blocklist);
+
+  const sites = generateSiteList(blocklist);
   if (debug) console.log(sites);
 
-  const hostString = generateHostsContent(sites);
+  let hostString = redirectlist.sort().reduce((acc, it) => {
+    return `${acc}${separator(it)}${Deno.readTextFileSync(it)}`;
+  }, "");
+  hostString += separator("BLOCKLIST");
+  hostString += generateHostsContent(sites);
 
   Deno.writeTextFile(outputFileName, hostString).then(() =>
     console.log(`\nFile written to ${outputFileName}`)

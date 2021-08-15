@@ -11,7 +11,7 @@ into a sorted list after the fact, to append it to your existing hosts file.
 
 ## What does the output look like?
 
-This is an example of the contents of a `hosts` file.
+This is an example of the contents of a very basic `hosts` file.
 
 ```hosts
 127.0.0.1 badsite.malware.com
@@ -23,6 +23,9 @@ it acts as a primitive type of DNS - when it detects the given domain name, it
 will try to access the given IP address. For sites that you do not actually want
 to contact, pointing to 127.0.0.1 (localhost) means that you ask your own
 machine for the information. It makes the request fail.
+
+You can see the test output of the tool at `./build/hosts`. It is the compiled
+output of the `./blocklists` and `./redirects` files.
 
 ## Usage
 
