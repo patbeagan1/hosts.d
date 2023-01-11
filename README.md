@@ -1,3 +1,9 @@
+# TLDR
+- Put urls in text files in the `blocklists` folder
+- Put any url aliases you want, in the `redirects` folder
+- Run `run.sh` to concatenate them all into a hosts file.
+- Copy that hosts file to `/etc/hosts` to get local ad blocking (make a backup of that file first)
+
 # Summary
 
 `/etc/hosts` files are a good way to make sure that your computer is not making
